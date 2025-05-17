@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<String> fliters = const ['All', 'Addidas', 'Nike', 'Bata'];
+  late String selectedFilter;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedFilter = fliters[0];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +48,40 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 120,
+              child: ListView.builder(
+                itemCount: fliters.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  final filter = fliters[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedFilter = filter;
+                        });
+                      },
+                      child: Chip(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        backgroundColor:
+                            selectedFilter == filter
+                                ? Theme.of(context).colorScheme.primary
+                                : Color.fromRGBO(245, 247, 249, 1),
+                        label: Text(filter, style: TextStyle(fontSize: 16)),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 15,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
