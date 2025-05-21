@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
           seedColor: Color.fromRGBO(254, 206, 1, 1),
           primary: Color.fromRGBO(254, 206, 1, 1),
         ),
+        textTheme: const TextTheme(
+          titleMedium: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          bodySmall: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
       ),
       home: HomePage(),
     );
