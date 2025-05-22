@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
                     'Shoes\nCollection',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 Expanded(
@@ -94,6 +94,10 @@ class _HomePageState extends State<HomePage> {
                     title: product['title'] as String,
                     price: product['price'] as double,
                     image: product['imageUrl'] as String,
+                    backGroundColor:
+                        index.isEven
+                            ? Color.fromRGBO(216, 240, 253, 1)
+                            : Color.fromRGBO(245, 247, 249, 1),
                   );
                 },
               ),
